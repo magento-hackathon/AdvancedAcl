@@ -1,3 +1,7 @@
+Build Status
+---
+[![Build Status](https://travis-ci.org/magento-hackathon/AdvancedAcl.svg?branch=master)](https://travis-ci.org/magento-hackathon/AdvancedAcl)
+
 # Extended Access Control List for Magento
 
 add support to define a website in the admin role
