@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Loewenstark_Acl>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Admin />
+            </depends>
+        </Loewenstark_Acl>
+    </modules>
+</config>
