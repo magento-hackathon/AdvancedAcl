@@ -18,9 +18,18 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
 
     }
 
-    public function filterInvoiceGrid()
+    /**
+     * filter sales order invoices collection by  allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterInvoiceGrid(Varien_Event_Observer $observer)
     {
-
+        $collection = $observer->getOrderInvoiceGridCollection();
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
+        }
     }
 
     /**
