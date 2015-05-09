@@ -34,32 +34,24 @@
 class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
     extends Mage_Adminhtml_Block_Store_Switcher
 {
-
-    protected function _construct() {
-        parent::_construct();
-    }
-
-
-    /**
-     * @deprecated since version from magento
-     */
-    public function getWebsiteCollection()
+    public function __construct()
     {
-        $collection = Mage::getModel('core/website')->getResourceCollection();
+        parent::__construct();
 
-        $websiteIds = $this->getWebsiteIds();
-        if (!is_null($websiteIds)) {
-            $collection->addIdFilter($this->getWebsiteIds());
+        $helper = Mage::helper('magentohackathon_advancedacl');
+        if (false === $helper->hasFullAccess()) {
+            $this->_hasDefaultOption = false;
         }
-
-        $websites = $this->_getNinWebsitesIds();
-        if(!empty($websites))
-        {
-            $collection->addFieldToFilter('website_id', array('nin', $websites));
-        }
-        return $collection->load();
     }
 
+    public function isShow()
+    {
+        $helper = Mage::helper('magentohackathon_advancedacl');
+        if (false === $helper->isSingleStoreMode()) {
+            return true;
+        }
+        return parent::isShow();
+    }
 
     /**
      * Get websites
@@ -68,34 +60,18 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
      */
     public function getWebsites()
     {
+        $helper = Mage::helper('magentohackathon_advancedacl');
         $websites = parent::getWebsites();
         $result = array();
-        foreach($websites as $website)
-        {
-            if(in_array($website->getWebsiteId(), $this->_getNinWebsitesIds()))
-            {
-                $result[] = $website;
+        foreach($websites as $website) {
+            foreach ($website->getStores() as $store) {
+                if ($helper->isAllowedAccessForStore($store)) {
+                    $result[] = $website;
+                    break;
+                }
             }
         }
         return $result;
-    }
-
-    /**
-     * @deprecated since version from magento
-     */
-    public function getGroupCollection($website)
-    {
-        if (!$website instanceof Mage_Core_Model_Website) {
-            $website = Mage::getModel('core/website')->load($website);
-        }
-
-        $collection = $website->getGroupCollection();
-        $websites = $this->_getNinWebsitesIds();
-        if(!empty($websites))
-        {
-            $collection->addFieldToFilter('website_id', array('nin', $websites));
-        }
-        return $collection;
     }
 
     /**
@@ -106,15 +82,37 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
      */
     public function getStoreGroups($website)
     {
-        return parent::getGroups();
+        $helper = Mage::helper('magentohackathon_advancedacl');
+        $storeGroups = parent::getStoreGroups($website);
+        $result = array();
+        foreach($storeGroups as $key=>$storeGroup) {
+            foreach ($storeGroups->getStores() as $store) {
+                if ($helper->isAllowedAccessForStore($store)) {
+                    $result[$key] = $storeGroup;
+                    break;
+                }
+            }
+        }
+        return $result;
     }
 
     /**
+     * Get store views for specified store group
      *
+     * @param Mage_Core_Model_Store_Group $group
      * @return array
      */
-    protected function _getNinWebsitesIds()
+    public function getStores($group)
     {
-        return Mage::helper('magentohackathon_advancedacl')->getWebsitesIds();
+        $helper = Mage::helper('magentohackathon_advancedacl');
+        $stores = parent::getStores($group);
+        $result = array();
+        foreach($stores as $key=>$store) {
+            if ($helper->isAllowedAccessForStore($store)) {
+                $result[$key] = $store;
+            }
+        }
+        return $result;
     }
+
 }

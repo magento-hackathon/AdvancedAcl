@@ -56,8 +56,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     {
         if (is_object($store) && $store instanceof Mage_Core_Model_Store) {
             $storeId = $store->getId();
-        }
-        if (is_numeric($store)) {
+        } elseif (is_numeric($store)) {
             $storeId = $store;
         } else {
             $storeId = Mage::getModel('core/store')->load($store)->getId();
