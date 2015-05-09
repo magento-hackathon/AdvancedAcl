@@ -1,2 +1,2 @@
-app/etc/modules/Loewenstark_Acl.xml                         app/etc/modules/Loewenstark_Acl.xml
-app/code/community/Loewenstark/Acl                          app/code/community/Loewenstark/Acl
+app/etc/modules/MagentoHackathon_AdvancedAcl.xml                         app/etc/modules/MagentoHackathon_AdvancedAcl.xml
+app/code/community/MagentoHackathon/AdvancedAcl                          app/code/community/MagentoHackathon/AdvancedAcl
