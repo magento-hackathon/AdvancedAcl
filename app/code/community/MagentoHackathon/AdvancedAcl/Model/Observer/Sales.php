@@ -70,6 +70,11 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
         }
     }
 
+    /**
+     * filters agreements grid by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
     public function filterAgreementsGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getCollection();
