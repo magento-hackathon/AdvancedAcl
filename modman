@@ -1,2 +1,3 @@
 app/etc/modules/MagentoHackathon_AdvancedAcl.xml                         app/etc/modules/MagentoHackathon_AdvancedAcl.xml
 app/code/community/MagentoHackathon/AdvancedAcl                          app/code/community/MagentoHackathon/AdvancedAcl
+app/locale/de_DE/MagentoHackathon_AdvancedAcl.csv                        app/locale/de_DE/MagentoHackathon_AdvancedAcl.csv

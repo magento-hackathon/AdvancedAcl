@@ -135,4 +135,15 @@
             </magentohackathon_advancedacl_setup>
         </resources>
     </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <MagentoHackathon_AdvancedAcl>
+                    <files>
+                        <magentohackathon_advancedacl>MagentoHackathon_AdvancedAcl.csv</magentohackathon_advancedacl>
+                    </files>
+                </MagentoHackathon_AdvancedAcl>
+            </modules>
+        </translate>
+    </adminhtml>
 </config>
