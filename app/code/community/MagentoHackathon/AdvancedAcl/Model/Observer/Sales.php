@@ -46,6 +46,23 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
         }
     }
 
+
+    /**
+     * filters credit memos grid by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterCreditMemoGrid(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getOrderCreditmemoGridCollection();
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
+        }
+    }
+
+
+
     /**
      * retrieves allowed store ids 
      *
