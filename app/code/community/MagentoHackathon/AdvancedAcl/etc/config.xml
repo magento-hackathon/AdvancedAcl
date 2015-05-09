@@ -128,20 +128,20 @@
             </eav_collection_abstract_load_before>
             <sales_order_grid_collection_load_before>
                 <observers>
-                    <magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                    <magentohackathon_sales_order_grid_collection_load_before>
                         <type>singleton</type>
                         <class>magentohackathon_advancedacl/observer_sales</class>
                         <method>filterOrderGrid</method>
-                    </magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                    </magentohackathon_sales_order_grid_collection_load_before>
                 </observers>
             </sales_order_grid_collection_load_before>
             <sales_order_invoice_grid_collection_load_before>
                 <observers>
-                    <magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                    <magentohackathon_sales_order_invoice_grid_collection_load_before>
                         <type>singleton</type>
                         <class>magentohackathon_advancedacl/observer_sales</class>
                         <method>filterinvoiceGrid</method>
-                    </magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                    </magentohackathon_sales_order_invoice_grid_collection_load_before>
                 </observers>
             </sales_order_invoice_grid_collection_load_before>
         </events>
