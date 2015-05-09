@@ -55,7 +55,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Rolesextend
          * Check is single store mode
          */
         if (!$this->_getHelper()->isSingleStoreMode()) {
-            $field = $fieldset->addField('store_id', 'multiselect', array(
+            $field = $fieldset->addField('store_ids', 'multiselect', array(
                 'name'      => 'stores[]',
                 'label'     => Mage::helper('cms')->__('Store View'),
                 'title'     => Mage::helper('cms')->__('Store View'),
@@ -66,7 +66,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Rolesextend
             $field->setRenderer($renderer);
         }
         else {
-            $fieldset->addField('store_id', 'hidden', array(
+            $fieldset->addField('store_ids', 'hidden', array(
                 'name'      => 'stores[]',
                 'value'     => Mage::app()->getStore(true)->getId()
             ));

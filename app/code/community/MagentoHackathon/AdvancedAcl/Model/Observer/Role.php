@@ -144,7 +144,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
     {
         $object = $observer->getDataObject();
         $stores = $this->lookupStoreIds($object->getId());
-        $object->setData('store_id', $stores);
+        $object->setData('store_ids', $stores);
     }
 
     /**
