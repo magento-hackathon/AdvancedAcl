@@ -12,28 +12,28 @@ class MagentoHackathon_AdvancedAcl_Test_Config_ObserverRoleConfigTEsts
     public function testEventObserversDefined()
     {
         $this->assertEventObserverDefined(
-            'global',
+            'adminhtml',
             'admin_permissions_role_prepare_save',
             'magentohackathon_advancedacl/observer_role',
             'addStoresToRoleModel'
         );
 
         $this->assertEventObserverDefined(
-            'global',
+            'adminhtml',
             'admin_roles_save_after',
             'magentohackathon_advancedacl/observer_role',
             'saveAfter'
         );
 
         $this->assertEventObserverDefined(
-            'global',
+            'adminhtml',
             'admin_roles_load_after',
             'magentohackathon_advancedacl/observer_role',
             'afterLoad'
         );
 
         $this->assertEventObserverDefined(
-            'global',
+            'adminhtml',
             'admin_roles_delete_before',
             'magentohackathon_advancedacl/observer_role',
             'beforeDelete'
