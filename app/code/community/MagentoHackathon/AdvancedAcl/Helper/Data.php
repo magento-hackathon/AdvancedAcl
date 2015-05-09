@@ -46,9 +46,14 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      */
     protected $_isSingleStoreMode = null;
 
+    /**
+     * if customer is allowed to access given store
+     *
+     * @param int|string|Mage_Core_Model_Store $store store id, store code, or store
+     * @return bool
+     */
     public function isAllowedAccessForStore($store)
     {
-        $adminUser = Mage::getSingleton('admin/session')->getUser();
         if (is_object($store) && $store instanceof Mage_Core_Model_Store) {
             $storeId = $store->getId();
         }
@@ -57,9 +62,46 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         } else {
             $storeId = Mage::getModel('core/store')->load($store)->getId();
         }
-        $allowedStores = $adminUser->getRole()->getStoreIds();
+        $allowedStores = $this->_getRole()->getStoreIds();
 
         return empty($allowedStores) || in_array($storeId, $allowedStores);
+    }
+
+    /**
+     * get stores the customer is restricted to
+     *
+     * @return array
+     */
+    public function getAllowedStoreIds()
+    {
+        return $this->_getRole()->getStoreIds();
+    }
+
+    /**
+     * if customer is restricted to specific stores
+     *
+     * @return bool
+     */
+    public function hasFullAccess()
+    {
+        $allowedStoreIds = $this->getAllowedStoreIds();
+
+        return empty($allowedStoreIds)
+            || Mage::getModel('core/store')->getCollection()->getAllIds() === $allowedStoreIds;
+    }
+
+    /**
+     * if customer can access all stores of a website
+     *
+     * @param Mage_Core_Model_Website|string $website Website to check stores of
+     * @return bool
+     */
+    public function hasFullWebsiteAccess($website)
+    {
+        if (is_string($website)) {
+            $website = Mage::getModel('core/website')->load($website);
+        }
+        return empty(array_diff($website->getStoreIds(), $this->getAllowedStoreIds()));
     }
 
     /**
@@ -148,9 +190,11 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      */
     protected function _getRole()
     {
-        if(is_null($this->_role))
-        {
-            return Mage::registry('current_role');
+        if (is_null($this->_role)) {
+            $this->_role = Mage::registry('current_role');
+        }
+        if (is_null($this->_role)) {
+            $this->_role = Mage::getSingleton('admin/session')->getUser()->getRole();
         }
         return $this->_role;
     }
