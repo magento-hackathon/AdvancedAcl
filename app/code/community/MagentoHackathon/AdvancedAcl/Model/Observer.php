@@ -186,4 +186,10 @@ class MagentoHackathon_AdvancedAcl_Model_Observer
     {
         return Mage::helper('magentohackathon_advancedacl');
     }
+
+    public function filterOrderGrid(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getOrderGridCollection();
+        $collection->addAttributeToFilter('store_id', array('in' => array(2)));
+    }
 }

@@ -126,6 +126,15 @@
                     </magentohackathon_advancedacl_eav_collection_abstract_load_before>
                 </observers>
             </eav_collection_abstract_load_before>
+            <sales_order_grid_collection_load_before>
+                <observers>
+                    <magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer</class>
+                        <method>filterOrderGrid</method>
+                    </magentohackathon_advancedacl_eav_collection_abstract_load_before>
+                </observers>
+            </sales_order_grid_collection_load_before>
         </events>
         <resources>
             <magentohackathon_advancedacl_setup>
