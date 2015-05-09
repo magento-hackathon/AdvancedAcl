@@ -1,10 +1,37 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andreas
- * Date: 09.05.15
- * Time: 13:31
+ * MagentoHackathon
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    MagentoHackathon
+ * @package     MagentoHackathon_AdvancedAcl
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
+
+/**
+ * Observer for admin role
+ *
+ * @category    MagentoHackathon
+ * @package     MagentoHackathon_AdvancedAcl
+ * @author      Andreas Penz <testa.peta@gmail.com>
+ */
+
 
 /**
  * Class MagentoHackathon_AdvancedAcl_Model_Observer_Role
@@ -117,7 +144,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
         $object = $observer->getDataObject();
         if ($object->getId()) {
             $stores = $this->lookupStoreIds($object->getId());
-            $object->setData('store_id', $stores);
+            $object->setData('store_ids', $stores);
         }
     }
 
