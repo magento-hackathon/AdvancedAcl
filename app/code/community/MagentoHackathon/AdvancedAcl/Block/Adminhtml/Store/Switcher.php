@@ -1,6 +1,6 @@
 <?php
 
-class Loewenstark_Acl_Block_Adminhtml_Store_Switcher
+class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
     extends Mage_Adminhtml_Block_Store_Switcher
 {
 
@@ -84,6 +84,6 @@ class Loewenstark_Acl_Block_Adminhtml_Store_Switcher
      */
     protected function _getNinWebsitesIds()
     {
-        return Mage::helper('loewenstark_acl')->getWebsitesIds();
+        return Mage::helper('magentohackathon_advancedacl')->getWebsitesIds();
     }
 }

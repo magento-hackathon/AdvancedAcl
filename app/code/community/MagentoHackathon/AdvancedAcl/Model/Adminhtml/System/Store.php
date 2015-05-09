@@ -1,6 +1,6 @@
 <?php
 
-class Loewenstark_Acl_Model_Adminhtml_System_Store
+class MagentoHackathon_AdvancedAcl_Model_Adminhtml_System_Store
     extends Mage_Adminhtml_Model_System_Store
 {
     /**

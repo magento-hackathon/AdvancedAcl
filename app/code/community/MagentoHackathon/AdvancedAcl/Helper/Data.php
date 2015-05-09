@@ -1,6 +1,6 @@
 <?php
 
-class Loewenstark_Acl_Helper_Data
+class MagentoHackathon_AdvancedAcl_Helper_Data
     extends Mage_Core_Helper_Abstract
 {
 
@@ -104,7 +104,7 @@ class Loewenstark_Acl_Helper_Data
     /**
      *
      * @param Mage_Admin_Model_Role $role
-     * @return Loewenstark_Acl_Helper_Data
+     * @return MagentoHackathon_AdvancedAcl_Helper_Data
      */
     public function setRole(Mage_Admin_Model_Role $role)
     {

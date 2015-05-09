@@ -1,6 +1,6 @@
 <?php
 
-class Loewenstark_Acl_Block_Adminhtml_Permissions_Tab_Rolesextend
+class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Rolesextend
     extends Mage_Adminhtml_Block_Widget_Form
     implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
@@ -53,11 +53,11 @@ class Loewenstark_Acl_Block_Adminhtml_Permissions_Tab_Rolesextend
 
     /**
      *
-     * @return Loewenstark_Acl_Helper_Data
+     * @return MagentoHackathon_AdvancedAcl_Helper_Data
      */
     protected function _helper()
     {
-        return Mage::helper('loewenstark_acl');
+        return Mage::helper('magentohackathon_advancedacl');
     }
 
 
@@ -68,7 +68,7 @@ class Loewenstark_Acl_Block_Adminhtml_Permissions_Tab_Rolesextend
 
     public function getTabLabel()
     {
-        return Mage::helper('loewenstark_acl')->__('Extended Role');
+        return Mage::helper('magentohackathon_advancedacl')->__('Extended Role');
     }
 
     public function getTabTitle()

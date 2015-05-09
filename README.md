@@ -3,7 +3,7 @@
 add support to define a website in the admin role
  for eg. catalog products, customers
 
-![image](https://raw.github.com/Loewenstark/Loewenstark_Acl/master/docs/EditRole.png)
+![image](https://raw.github.com/magento-hackathon/AdvancedAcl/master/docs/EditRole.png)
 
 ### in Development
 
@@ -14,5 +14,6 @@ Licence
 Copyright
 ---------
 (c) 2015
+
 =======
 # AdvancedAcl

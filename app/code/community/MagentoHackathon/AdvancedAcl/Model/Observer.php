@@ -1,6 +1,6 @@
 <?php
 
-class Loewenstark_Acl_Model_Observer
+class MagentoHackathon_AdvancedAcl_Model_Observer
 {
     /**
      *
@@ -53,8 +53,8 @@ class Loewenstark_Acl_Model_Observer
         {
             if(!$this->_isAdmin())
             {
-                $tab = $block->getLayout()->createBlock('loewenstark_acl/adminhtml_permissions_tab_Rolesextend', 'adminhtml.permissions.tab.loewenstark_acl');
-                $block->addTab('loewenstark_acl', $tab);
+                $tab = $block->getLayout()->createBlock('magentohackathon_advancedacl/adminhtml_permissions_tab_Rolesextend', 'adminhtml.permissions.tab.magentohackathon_advancedacl');
+                $block->addTab('magentohackathon_advancedacl', $tab);
             }
         }
     }
@@ -149,10 +149,10 @@ class Loewenstark_Acl_Model_Observer
 
     /**
      *
-     * @return Loewenstark_Acl_Helper_Data
+     * @return MagentoHackathon_AdvancedAcl_Helper_Data
      */
     protected function _helper()
     {
-        return Mage::helper('loewenstark_acl');
+        return Mage::helper('magentohackathon_advancedacl');
     }
 }
