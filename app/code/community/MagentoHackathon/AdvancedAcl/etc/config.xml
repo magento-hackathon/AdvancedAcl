@@ -180,6 +180,15 @@
                      </magentohackathon_sales_order_creditmemo_grid_collection>
                  </observers>
              </sales_order_creditmemo_grid_collection_load_before>
+            <sales_recurring_profile_collection_load_before>
+                 <observers>
+                     <magentohackathon_sales_order_creditmemo_grid_collection>
+                         <type>singleton</type>
+                         <class>magentohackathon_advancedacl/observer_sales</class>
+                         <method>filterRecurringProfilesGrid</method>
+                     </magentohackathon_sales_order_creditmemo_grid_collection>
+                 </observers>
+             </sales_recurring_profile_collection_load_before>
             <core_collection_abstract_load_before>
                 <observers>
                     <magentohackathon_catalog_product_collection_load_before>

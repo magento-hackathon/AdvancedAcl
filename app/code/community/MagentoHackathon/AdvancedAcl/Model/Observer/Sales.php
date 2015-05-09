@@ -86,6 +86,21 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     }
 
 
+    /**
+     * filters recurring profile grid by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterRecurringProfilesGrid(Varien_Event_Observer $observer)
+    {
+        /** @var Mage_Sales_Model_Resource_Recurring_Profile_Collection $collection */
+        $collection = $observer->getRecurringProfileCollection();
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addFieldToFilter('store_id', array('in' => $storeIds));
+        }
+    }
+
 
     /**
      * retrieves allowed store ids 
