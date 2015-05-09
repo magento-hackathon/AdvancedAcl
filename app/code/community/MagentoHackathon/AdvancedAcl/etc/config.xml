@@ -54,6 +54,42 @@
                     </magentohackathon_advancedacl_load_after>
                 </observers>
             </model_load_after>
+            <admin_permissions_role_prepare_save>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_role</class>
+                        <method>addStoresToRoleModel</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </admin_permissions_role_prepare_save>
+            <admin_roles_save_after>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_role</class>
+                        <method>saveAfter</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </admin_roles_save_after>
+            <admin_roles_load_after>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_role</class>
+                        <method>afterLoad</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </admin_roles_load_after>
+            <admin_roles_delete_before>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_role</class>
+                        <method>beforeDelete</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </admin_roles_delete_before>
             <core_block_abstract_prepare_layout_after>
                 <observers>
                     <magentohackathon_advancedacl_core_block_abstract_prepare_layout_after>

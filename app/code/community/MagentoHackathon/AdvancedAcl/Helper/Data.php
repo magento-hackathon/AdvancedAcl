@@ -9,6 +9,11 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     protected $_role = null;
 
     /**
+     * @var null|boolean
+     */
+    protected $_isSingleStoreMode = null;
+
+    /**
      * 
      * @todo add DispatchEvent in this method
      * @return array
@@ -148,4 +153,18 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         }
         return $this->_websites_not_int_list;
     }
+
+    /**
+     * Is single Store mode (only one store without default)
+     *
+     * @return bool|null
+     */
+    public function isSingleStoreMode()
+    {
+        if (is_null($this->_isSingleStoreMode)) {
+            $this->_isSingleStoreMode = Mage::app()->isSingleStoreMode();
+        }
+        return $this->_isSingleStoreMode;
+    }
+
 }
