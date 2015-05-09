@@ -9,7 +9,16 @@
         <models>
             <magentohackathon_advancedacl>
                 <class>MagentoHackathon_AdvancedAcl_Model</class>
+                <resourceModel>magentohackathon_advancedacl_resource</resourceModel>
             </magentohackathon_advancedacl>
+            <magentohackathon_advancedacl_resource>
+                <class>MagentoHackathon_AdvancedAcl_Model_Resource</class>
+                <entities>
+                    <role_store>
+                        <table>admin_role_store</table>
+                    </role_store>
+                </entities>
+            </magentohackathon_advancedacl_resource>
         </models>
         <helpers>
             <magentohackathon_advancedacl>
