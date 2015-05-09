@@ -1,9 +1,9 @@
 <?php
 
 class Loewenstark_Acl_Block_Adminhtml_Store_Switcher
-extends Mage_Adminhtml_Block_Store_Switcher
+    extends Mage_Adminhtml_Block_Store_Switcher
 {
-    
+
     protected function _construct() {
         parent::_construct();
     }
@@ -20,7 +20,7 @@ extends Mage_Adminhtml_Block_Store_Switcher
         if (!is_null($websiteIds)) {
             $collection->addIdFilter($this->getWebsiteIds());
         }
-        
+
         $websites = $this->_getNinWebsitesIds();
         if(!empty($websites))
         {
@@ -28,8 +28,8 @@ extends Mage_Adminhtml_Block_Store_Switcher
         }
         return $collection->load();
     }
-    
-    
+
+
     /**
      * Get websites
      *
@@ -48,7 +48,7 @@ extends Mage_Adminhtml_Block_Store_Switcher
         }
         return $result;
     }
-    
+
     /**
      * @deprecated since version from magento
      */
@@ -57,7 +57,7 @@ extends Mage_Adminhtml_Block_Store_Switcher
         if (!$website instanceof Mage_Core_Model_Website) {
             $website = Mage::getModel('core/website')->load($website);
         }
-        
+
         $collection = $website->getGroupCollection();
         $websites = $this->_getNinWebsitesIds();
         if(!empty($websites))
@@ -66,7 +66,7 @@ extends Mage_Adminhtml_Block_Store_Switcher
         }
         return $collection;
     }
-    
+
     /**
      * Get store groups for specified website
      *
@@ -77,9 +77,9 @@ extends Mage_Adminhtml_Block_Store_Switcher
     {
         return parent::getGroups();
     }
-    
+
     /**
-     * 
+     *
      * @return array
      */
     protected function _getNinWebsitesIds()

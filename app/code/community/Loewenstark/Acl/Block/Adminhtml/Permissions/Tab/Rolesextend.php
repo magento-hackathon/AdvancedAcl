@@ -1,14 +1,9 @@
 <?php
 
 class Loewenstark_Acl_Block_Adminhtml_Permissions_Tab_Rolesextend
-extends Mage_Adminhtml_Block_Widget_Form
-implements Mage_Adminhtml_Block_Widget_Tab_Interface
+    extends Mage_Adminhtml_Block_Widget_Form
+    implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
-    public function _construct()
-    {
-        parent::_construct();
-    }
-    
     protected function _initForm()
     {
 
@@ -24,21 +19,22 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
                 'values' => $this->_helper()->getWebsiteAsOption()
             )
         );
-        
+
         $form->setValues($this->getRole()->getData());
         $this->setForm($form);
     }
-    
+
     /**
-     * 
+     *
      */
-    protected function _beforeToHtml() {
+    protected function _beforeToHtml()
+    {
         $this->_initForm();
         parent::_beforeToHtml();
     }
 
     /**
-     * 
+     *
      * @return Mage_Admin_Model_Roles
      */
     protected function getRole()
@@ -47,7 +43,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
     }
 
     /**
-     * 
+     *
      * @return Mage_Admin_Model_Roles
      */
     protected function getRoles()
@@ -56,7 +52,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
     }
 
     /**
-     * 
+     *
      * @return Loewenstark_Acl_Helper_Data
      */
     protected function _helper()

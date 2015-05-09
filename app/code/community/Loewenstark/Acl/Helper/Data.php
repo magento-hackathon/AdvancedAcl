@@ -1,10 +1,10 @@
 <?php
 
 class Loewenstark_Acl_Helper_Data
-extends Mage_Core_Helper_Abstract
+    extends Mage_Core_Helper_Abstract
 {
-    
-    protected $_websites_not_int_list = null;    
+
+    protected $_websites_not_int_list = null;
     protected $_websites = null;
     protected $_role = null;
 
@@ -22,7 +22,7 @@ extends Mage_Core_Helper_Abstract
 
     /**
      * @deprecated since version 1.0.0.1
-     * 
+     *
      * @return array
      */
     public function getFieldsInJson()
@@ -31,7 +31,7 @@ extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getWebsites()
@@ -53,7 +53,7 @@ extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * 
+     *
      * @return mixed
      */
     public function getWebsiteAsOption()
@@ -70,18 +70,17 @@ extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * 
-     * 
+     *
      * @param int $roleid role_id from admin/role
      * @return boolean
      */
     public function isAdmin()
     {
         $collection = Mage::getModel('admin/rules')
-                ->getCollection()
-                ->addFieldToFilter('role_id', $this->_getRole()->getId())
-                ->addFieldToFilter('resource_id', 'all')
-                ->addFieldToFilter('permission', 'allow');
+            ->getCollection()
+            ->addFieldToFilter('role_id', $this->_getRole()->getId())
+            ->addFieldToFilter('resource_id', 'all')
+            ->addFieldToFilter('permission', 'allow');
         if($collection->count() > 0)
         {
             return true;
@@ -90,7 +89,7 @@ extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * 
+     *
      * @return Mage_Admin_Model_Roles
      */
     protected function _getRole()
@@ -103,7 +102,7 @@ extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * 
+     *
      * @param Mage_Admin_Model_Role $role
      * @return Loewenstark_Acl_Helper_Data
      */
@@ -115,7 +114,7 @@ extends Mage_Core_Helper_Abstract
 
     /**
      * check if the admin area is active
-     * 
+     *
      * @return boolean
      */
     public function isAdminArea()
@@ -123,21 +122,21 @@ extends Mage_Core_Helper_Abstract
         if(Mage::getDesign()->getArea() == 'adminhtml')
         {
             return true;
-        }   
+        }
         return false;
     }
 
     /**
-     * 
+     *
      * @return Mage_Admin_Model_Role
      */
     public function getActiveRole()
     {
         return Mage::getSingleton('admin/session')->getUser()->getRole();
     }
-    
+
     /**
-     * 
+     *
      * @return array
      */
     public function getWebsitesIds()
