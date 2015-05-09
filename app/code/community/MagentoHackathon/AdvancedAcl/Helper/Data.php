@@ -105,6 +105,20 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     }
 
     /**
+     * if customer can access all stores of a store group
+     *
+     * @param Mage_Core_Model_Store_Group|string $group Group to check stores of
+     * @return bool
+     */
+    public function hasFullStoreGroupAccess($storeGroup)
+    {
+        if (is_string($storeGroup)) {
+            $storeGroup = Mage::getModel('core/store_group')->load($storeGroup);
+        }
+        return empty(array_diff($storeGroup->getStoreIds(), $this->getAllowedStoreIds()));
+    }
+
+    /**
      *
      * @todo add DispatchEvent in this method
      * @return array

@@ -32,6 +32,7 @@
             <adminhtml>
                 <rewrite>
                     <store_switcher>MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher</store_switcher>
+                    <system_config_switcher>MagentoHackathon_AdvancedAcl_Block_Adminhtml_System_Config_Switcher</system_config_switcher>
                 </rewrite>
             </adminhtml>
         </blocks>
