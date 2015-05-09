@@ -159,7 +159,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
             $condition = array(
                 'role_id = ?' => (int)$object->getId(),
             );
-            $this->_getWriteAdapter()->delete($this->_getTable('magentohackathon_advancedacl/rule_store'), $condition);
+            $this->_getWriteAdapter()->delete($this->_getTable('magentohackathon_advancedacl/role_store'), $condition);
         }
     }
 }
