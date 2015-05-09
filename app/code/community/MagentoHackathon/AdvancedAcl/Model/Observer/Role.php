@@ -103,7 +103,6 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
                             'store_id' => (int) $storeId
                         );
                     }
-
                     $this->_getWriteAdapter()->insertMultiple($table, $data);
                 }
             }
@@ -116,8 +115,10 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
     public function afterLoad(Varien_Event_Observer $observer)
     {
         $object = $observer->getDataObject();
-        $stores = $this->lookupStoreIds($object->getId());
-        $object->setData('store_id', $stores);
+        if ($object->getId()) {
+            $stores = $this->lookupStoreIds($object->getId());
+            $object->setData('store_id', $stores);
+        }
     }
 
     /**
@@ -127,9 +128,11 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
     {
         $object = $observer->getDataObject();
 
-        $condition = array(
-            'role_id = ?' => (int)$object->getId(),
-        );
-        $this->_getWriteAdapter()->delete($this->_getTable('magentohackathon_advancedacl/rule_store'), $condition);
+        if ($object->getId()) {
+            $condition = array(
+                'role_id = ?' => (int)$object->getId(),
+            );
+            $this->_getWriteAdapter()->delete($this->_getTable('magentohackathon_advancedacl/rule_store'), $condition);
+        }
     }
 }
