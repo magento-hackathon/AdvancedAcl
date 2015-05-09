@@ -62,7 +62,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         } else {
             $storeId = Mage::getModel('core/store')->load($store)->getId();
         }
-        $allowedStores = $this->_getRole()->getStoreIds();
+        $allowedStores = $this->getActiveRole()->getStoreIds();
 
         return empty($allowedStores) || in_array($storeId, $allowedStores);
     }
@@ -74,7 +74,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      */
     public function getAllowedStoreIds()
     {
-        return $this->_getRole()->getStoreIds();
+        return $this->getActiveRole()->getStoreIds();
     }
 
     /**
@@ -174,7 +174,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     {
         $collection = Mage::getModel('admin/rules')
             ->getCollection()
-            ->addFieldToFilter('role_id', $this->_getRole()->getId())
+            ->addFieldToFilter('role_id', $this->getActiveRole()->getId())
             ->addFieldToFilter('resource_id', 'all')
             ->addFieldToFilter('permission', 'allow');
         if($collection->count() > 0)
@@ -182,21 +182,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
             return true;
         }
         return false;
-    }
-
-    /**
-     *
-     * @return Mage_Admin_Model_Roles
-     */
-    protected function _getRole()
-    {
-        if (is_null($this->_role)) {
-            $this->_role = Mage::registry('current_role');
-        }
-        if (is_null($this->_role)) {
-            $this->_role = Mage::getSingleton('admin/session')->getUser()->getRole();
-        }
-        return $this->_role;
     }
 
     /**
