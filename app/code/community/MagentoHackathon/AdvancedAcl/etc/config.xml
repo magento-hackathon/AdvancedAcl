@@ -194,13 +194,22 @@
              </sales_recurring_profile_collection_load_before>
             <core_collection_abstract_load_before>
                 <observers>
-                    <magentohackathon_catalog_product_collection_load_before>
+                    <magentohackathon_core_collection_abstract_load_before>
                         <type>singleton</type>
                         <class>magentohackathon_advancedacl/observer_sales</class>
                         <method>filterAgreementsGrid</method>
-                    </magentohackathon_catalog_product_collection_load_before>
+                    </magentohackathon_core_collection_abstract_load_before>
                 </observers>
             </core_collection_abstract_load_before>
+            <eav_collection_abstract_load_before>
+                <observers>
+                    <magentohackathon_catalog_product_collection_load_before>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_catalog</class>
+                        <method>filterProductGrid</method>
+                    </magentohackathon_catalog_product_collection_load_before>
+                </observers>
+            </eav_collection_abstract_load_before>
             <controller_action_predispatch_adminhtml_system_config_edit>
                 <observers>
                     <magentohackathon_advancedacl>
