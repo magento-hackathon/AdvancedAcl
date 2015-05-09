@@ -11,10 +11,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterOrderGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getOrderGridCollection();
-        $storeIds = $this->getStoreIds();
-        if (0 < count($storeIds)) {
-            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
-        }
+        $this->filterCollection($collection);
 
     }
 
@@ -26,10 +23,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterInvoiceGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getOrderInvoiceGridCollection();
-        $storeIds = $this->getStoreIds();
-        if (0 < count($storeIds)) {
-            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
-        }
+        $this->filterCollection($collection);
     }
 
     /**
@@ -40,10 +34,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterShipmentsGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getOrderShipmentGridCollection();
-        $storeIds = $this->getStoreIds();
-        if (0 < count($storeIds)) {
-            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
-        }
+        $this->filterCollection($collection);
     }
 
 
@@ -55,19 +46,13 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterCreditMemoGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getOrderCreditmemoGridCollection();
-        $storeIds = $this->getStoreIds();
-        if (0 < count($storeIds)) {
-            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
-        }
+        $this->filterCollection($collection);
     }
 
     public function filterAgreements(Varien_Event_Observer $observer)
     {
         $collection = $observer->getOrderCreditmemoGridCollection();
-        $storeIds = $this->getStoreIds();
-        if (0 < count($storeIds)) {
-            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
-        }
+        $this->filterCollection($collection);
     }
 
     /**
@@ -111,6 +96,17 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     protected function getStoreIds()
     {
         return Mage::helper('magentohackathon_advancedacl/data')->getActiveRole()->getStoreIds();
+    }
+
+    /**
+     * @param $collection
+     */
+    public function filterCollection($collection)
+    {
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
+        }
     }
 
 }
