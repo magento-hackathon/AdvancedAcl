@@ -74,7 +74,9 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     {
         $collection = $observer->getCollection();
         if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection) {
-            $collection->addStoreFilter($this->getStoreIds());
+            if (0 < $this->getStoreIds()) {
+                $collection->addStoreFilter($this->getStoreIds());
+            }
         }
     }
 
