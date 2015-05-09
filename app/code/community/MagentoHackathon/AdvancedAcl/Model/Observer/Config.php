@@ -37,36 +37,29 @@
  * Class MagentoHackathon_AdvancedAcl_Model_Observer_Config
  */
 class MagentoHackathon_AdvancedAcl_Model_Observer_Config
+    extends MagentoHackathon_AdvancedAcl_Model_Observer_Abstract
 {
     public function beforeLoad($observer)
     {
-        $helper = Mage::helper('magentohackathon_advancedacl');
         $controller = $observer->getControllerAction();
         $website = $controller->getRequest()->getParam('website');
         $store   = $controller->getRequest()->getParam('store');
 
-        if ($helper->hasFullAccess() || $helper->isSingleStoreMode()) {
+        if ($this->getHelper()->hasFullAccess() || $this->getHelper()->isSingleStoreMode()) {
             // there is no restriction for this user
             return;
         }
 
         if ($store) {
-            if (false === $helper->isAllowedAccessForStore($store)) {
+            if (false === $this->getHelper()->isAllowedAccessForStore($store)) {
                 return $this->denyAccess($controller);
             }
         } elseif ($website) {
-            if (false === $helper->hasFullWebsiteAccess($website)) {
+            if (false === $this->getHelper()->hasFullWebsiteAccess($website)) {
                 return $this->denyAccess($controller);
             }
         } else {
             return $this->denyAccess($controller);
         }
-    }
-
-    protected function denyAccess($controller)
-    {
-        $controller->deniedAction();
-        $controller->setFlag('', Mage_Adminhtml_System_ConfigController::FLAG_NO_DISPATCH, true);
-        return false;
     }
 }

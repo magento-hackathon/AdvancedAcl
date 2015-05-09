@@ -79,10 +79,11 @@ class MagentoHackathon_AdvancedAcl_Model_Observer
     public function addTabToRoles($event)
     {
         $block = $event->getBlock();
+
         /* @var Mage_Adminhtml_Block_Permissions_Editroles $block */
         if($block instanceof Mage_Adminhtml_Block_Permissions_Editroles)
         {
-            if(!$this->_isAdmin())
+            if($this->_isAdmin())
             {
                 $tab = $block->getLayout()->createBlock('magentohackathon_advancedacl/adminhtml_permissions_tab_Rolesextend', 'adminhtml.permissions.tab.magentohackathon_advancedacl');
                 $block->addTab('magentohackathon_advancedacl', $tab);
@@ -171,6 +172,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer
     protected function _isAdmin()
     {
         $role = $this->_getRole();
+
         if($role)
         {
             return $this->_helper()->isAdmin($role->getId());

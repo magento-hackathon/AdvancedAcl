@@ -52,8 +52,11 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * @param int|string|Mage_Core_Model_Store $store store id, store code, or store
      * @return bool
      */
-    public function isAllowedAccessForStore($store)
+    public function isAllowedAccessForStore($store = null)
     {
+        if (is_null($store)) {
+            $store = $this->getDefaultStoreId();
+        }
         if (is_object($store) && $store instanceof Mage_Core_Model_Store) {
             $storeId = $store->getId();
         }
@@ -245,4 +248,17 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         return $this->_isSingleStoreMode;
     }
 
+    /**
+     * get the default store-id
+     *
+     * @return mixed
+     * @throws Mage_Core_Exception
+     */
+    public function getDefaultStoreId()
+    {
+        return Mage::app()
+            ->getWebsite(true)
+            ->getDefaultGroup()
+            ->getDefaultStoreId();
+    }
 }

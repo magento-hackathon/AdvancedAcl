@@ -30,9 +30,11 @@
                 <class>MagentoHackathon_AdvancedAcl_Block</class>
             </magentohackathon_advancedacl>
             <adminhtml>
+                <!--
                 <rewrite>
                     <store_switcher>MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher</store_switcher>
                 </rewrite>
+                -->
             </adminhtml>
         </blocks>
         <resources>
@@ -207,6 +209,15 @@
                     </magentohackathon_advancedacl>
                 </observers>
             </controller_action_predispatch_adminhtml_system_config_edit>
+            <controller_action_predispatch_adminhtml_catalog_product_edit>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_access</class>
+                        <method>productEditAccessAllowed</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </controller_action_predispatch_adminhtml_catalog_product_edit>
          </events>
     </adminhtml>
     <phpunit>
