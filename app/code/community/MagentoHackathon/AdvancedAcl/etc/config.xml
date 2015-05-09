@@ -130,7 +130,7 @@
                 <observers>
                     <magentohackathon_advancedacl_eav_collection_abstract_load_before>
                         <type>singleton</type>
-                        <class>magentohackathon_advancedacl/observer</class>
+                        <class>magentohackathon_advancedacl/observer_sales</class>
                         <method>filterOrderGrid</method>
                     </magentohackathon_advancedacl_eav_collection_abstract_load_before>
                 </observers>
