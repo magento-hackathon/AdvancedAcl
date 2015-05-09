@@ -61,6 +61,23 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
         }
     }
 
+    public function filterAgreements(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getOrderCreditmemoGridCollection();
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
+        }
+    }
+
+    public function filterAgreementsGrid(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getCollection();
+        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection) {
+            $collection->addStoreFilter($this->getStoreIds());
+        }
+    }
+
 
 
     /**
@@ -70,7 +87,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
      */
     protected function getStoreIds()
     {
-        return Mage::helper('magentohackathon_advancedacl/data')->getActiveRole()->getStoreId();
+        return Mage::helper('magentohackathon_advancedacl/data')->getActiveRole()->getStoreIds();
     }
 
 }
