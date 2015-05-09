@@ -46,6 +46,22 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      */
     protected $_isSingleStoreMode = null;
 
+    public function isAllowedAccessForStore($store)
+    {
+        $adminUser = Mage::getSingleton('admin/session')->getUser();
+        if (is_object($store) && $store instanceof Mage_Core_Model_Store) {
+            $storeId = $store->getId();
+        }
+        if (is_numeric($store)) {
+            $storeId = $store;
+        } else {
+            $storeId = Mage::getModel('core/store')->load($store)->getId();
+        }
+        $allowedStores = $adminUser->getRole()->getStoreIds();
+
+        return empty($allowedStores) || in_array($storeId, $allowedStores);
+    }
+
     /**
      *
      * @todo add DispatchEvent in this method
