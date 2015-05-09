@@ -140,10 +140,19 @@
                     <magentohackathon_sales_order_invoice_grid_collection_load_before>
                         <type>singleton</type>
                         <class>magentohackathon_advancedacl/observer_sales</class>
-                        <method>filterinvoiceGrid</method>
+                        <method>filterInvoiceGrid</method>
                     </magentohackathon_sales_order_invoice_grid_collection_load_before>
                 </observers>
             </sales_order_invoice_grid_collection_load_before>
+            <sales_order_shipment_grid_collection_load_before>
+                <observers>
+                    <magentohackathon_sales_order_shipment_grid_collection>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_sales</class>
+                        <method>filterShipmentsGrid</method>
+                    </magentohackathon_sales_order_shipment_grid_collection>
+                </observers>
+            </sales_order_shipment_grid_collection_load_before>
         </events>
         <resources>
             <magentohackathon_advancedacl_setup>

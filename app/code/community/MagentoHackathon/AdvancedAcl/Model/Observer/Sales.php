@@ -33,6 +33,20 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     }
 
     /**
+     * filters shipment grid by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterShipmentsGrid(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getOrderShipmentGridCollection();
+        $storeIds = $this->getStoreIds();
+        if (0 < count($storeIds)) {
+            $collection->addAttributeToFilter('store_id', array('in' => $storeIds));
+        }
+    }
+
+    /**
      * retrieves allowed store ids 
      *
      * @return mixed
