@@ -59,8 +59,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         }
         if (is_object($store) && $store instanceof Mage_Core_Model_Store) {
             $storeId = $store->getId();
-        }
-        if (is_numeric($store)) {
+        } elseif (is_numeric($store)) {
             $storeId = $store;
         } else {
             $storeId = Mage::getModel('core/store')->load($store)->getId();
@@ -105,6 +104,20 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
             $website = Mage::getModel('core/website')->load($website);
         }
         return empty(array_diff($website->getStoreIds(), $this->getAllowedStoreIds()));
+    }
+
+    /**
+     * if customer can access all stores of a store group
+     *
+     * @param Mage_Core_Model_Store_Group|string $group Group to check stores of
+     * @return bool
+     */
+    public function hasFullStoreGroupAccess($storeGroup)
+    {
+        if (is_string($storeGroup)) {
+            $storeGroup = Mage::getModel('core/store_group')->load($storeGroup);
+        }
+        return empty(array_diff($storeGroup->getStoreIds(), $this->getAllowedStoreIds()));
     }
 
     /**
