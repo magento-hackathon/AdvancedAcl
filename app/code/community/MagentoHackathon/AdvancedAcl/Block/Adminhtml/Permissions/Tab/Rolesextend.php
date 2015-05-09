@@ -88,7 +88,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Rolesextend
 
     public function getTabLabel()
     {
-        return Mage::helper('magentohackathon_advancedacl')->__('Advanced Acl');
+        return Mage::helper('magentohackathon_advancedacl')->__('Advanced ACL');
     }
 
     public function getTabTitle()
