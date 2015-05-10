@@ -226,6 +226,26 @@
                     </magentohackathon_advancedacl>
                 </observers>
             </controller_action_predispatch_adminhtml_catalog_product_edit>
+            <!-- append store_id to url -->
+            <controller_action_predispatch_adminhtml_catalog_product_edit>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_url</class>
+                        <method>catalogProductEdit</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </controller_action_predispatch_adminhtml_catalog_product_edit>
+            <controller_action_predispatch_adminhtml_catalog_category_edit>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_url</class>
+                        <method>catalogCategoryEdit</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </controller_action_predispatch_adminhtml_catalog_category_edit>
+            <!-- // append store_id to url -->
          </events>
     </adminhtml>
     <phpunit>
