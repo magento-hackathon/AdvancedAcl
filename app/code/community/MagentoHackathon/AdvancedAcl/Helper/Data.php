@@ -39,7 +39,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
 
     protected $_websites_not_int_list = null;
     protected $_websites = null;
-    protected $_role = null;
 
     /**
      * @var null|boolean
@@ -198,17 +197,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
             return true;
         }
         return false;
-    }
-
-    /**
-     *
-     * @param Mage_Admin_Model_Role $role
-     * @return MagentoHackathon_AdvancedAcl_Helper_Data
-     */
-    public function setRole(Mage_Admin_Model_Role $role)
-    {
-        $this->_role = $role;
-        return $this;
     }
 
     /**
