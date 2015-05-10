@@ -68,6 +68,26 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Catalog
     }
 
     /**
+     * filter out categories by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterCategories(Varien_Event_Observer $observer)
+    {
+        /** @var Mage_Catalog_Model_Resource_Category_Collection $collection */
+        $collection = $observer->getCategoryCollection();
+        $storeIds = $this->getStoreIds();
+        $oldStoreId = $collection->getStoreId();
+        // setting the first allowed store if the current store is not allowed for user
+        if (!empty($storeIds) && !in_array($oldStoreId, $storeIds)) {
+            $allowedStoreId = current($storeIds);
+            $collection
+                ->setProductStoreId($allowedStoreId)
+                ->setStoreId($allowedStoreId);
+        }
+    }
+
+    /**
      * retrieves allowed store ids
      *
      * @return mixed
