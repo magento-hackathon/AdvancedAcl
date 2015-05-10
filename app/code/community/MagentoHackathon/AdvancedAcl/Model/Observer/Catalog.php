@@ -37,6 +37,22 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Catalog
     }
 
     /**
+     * filter search terms by allowed stores
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function filterSearchTermsGrid(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getCollection();
+        if ($collection instanceof Mage_CatalogSearch_Model_Resource_Query_Collection) {
+            $storeIds = $this->getStoreIds();
+            if (!empty($storeIds)) {
+                $collection->addStoreFilter($storeIds);
+            }
+        }
+    }
+
+    /**
      * retrieves allowed store ids
      *
      * @return mixed
