@@ -126,6 +126,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      *
      * @todo add DispatchEvent in this method
      * @return array
+     * @codeCoverageIgnore
      */
     public function getFields()
     {
@@ -148,6 +149,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      *
      * @param int $roleid role_id from admin/role
      * @return boolean
+     * @codeCoverageIgnore
      */
     public function isAdmin()
     {
@@ -167,6 +169,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * check if the admin area is active
      *
      * @return boolean
+     * @codeCoverageIgnore
      */
     public function isAdminArea()
     {
@@ -180,6 +183,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     /**
      *
      * @return Mage_Admin_Model_Role
+     * @codeCoverageIgnore
      */
     public function getActiveRole()
     {
@@ -190,6 +194,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * Is single Store mode (only one store without default)
      *
      * @return bool|null
+     * @codeCoverageIgnore
      */
     public function isSingleStoreMode()
     {
@@ -204,6 +209,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      *
      * @return mixed
      * @throws Mage_Core_Exception
+     * @codeCoverageIgnore
      */
     public function getDefaultStoreId()
     {
