@@ -62,7 +62,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Config
         }
 
         if ($store) {
-            if (false === $this->getHelper()->isAllowedAccessForStore($store)) {
+            if (false === $this->getHelper()->hasStoreViewAccess($store)) {
                 return $this->denyAccess($controller);
             }
         } elseif ($website) {

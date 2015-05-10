@@ -65,7 +65,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
         $result = array();
         foreach($websites as $website) {
             foreach ($website->getStores() as $store) {
-                if ($helper->isAllowedAccessForStore($store)) {
+                if ($helper->hasStoreViewAccess($store)) {
                     $result[] = $website;
                     break;
                 }
@@ -87,7 +87,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
         $result = array();
         foreach($storeGroups as $key=>$storeGroup) {
             foreach ($storeGroups->getStores() as $store) {
-                if ($helper->isAllowedAccessForStore($store)) {
+                if ($helper->hasStoreViewAccess($store)) {
                     $result[$key] = $storeGroup;
                     break;
                 }
@@ -108,7 +108,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher
         $stores = parent::getStores($group);
         $result = array();
         foreach($stores as $key=>$store) {
-            if ($helper->isAllowedAccessForStore($store)) {
+            if ($helper->hasStoreViewAccess($store)) {
                 $result[$key] = $store;
             }
         }

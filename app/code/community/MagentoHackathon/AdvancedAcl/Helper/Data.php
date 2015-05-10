@@ -39,7 +39,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
 
     protected $_websites_not_int_list = null;
     protected $_websites = null;
-    protected $_role = null;
 
     /**
      * @var null|boolean
@@ -52,7 +51,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * @param int|string|Mage_Core_Model_Store $store store id, store code, or store
      * @return bool
      */
-    public function isAllowedAccessForStore($store = null)
+    public function hasStoreViewAccess($store = null)
     {
         if (is_null($store)) {
             $store = $this->getDefaultStoreId();
@@ -198,17 +197,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
             return true;
         }
         return false;
-    }
-
-    /**
-     *
-     * @param Mage_Admin_Model_Role $role
-     * @return MagentoHackathon_AdvancedAcl_Helper_Data
-     */
-    public function setRole(Mage_Admin_Model_Role $role)
-    {
-        $this->_role = $role;
-        return $this;
     }
 
     /**

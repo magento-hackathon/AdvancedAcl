@@ -52,7 +52,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_System_Config_Switcher
                         unset($options[$key]);
                     }
                 } elseif (preg_match('/^store_(.+)$/', $key, $matches)) {
-                    if (false === $helper->isAllowedAccessForStore($matches[1])) {
+                    if (false === $helper->hasStoreViewAccess($matches[1])) {
                         unset($options[$key]);
                     }
                 }
