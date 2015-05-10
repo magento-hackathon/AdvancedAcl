@@ -40,6 +40,27 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
 {
 
     /**
+     * Add store restriction tab
+     *
+     * @param Varien_Event $event
+     */
+    public function addTabToRoles($event)
+    {
+        $block = $event->getBlock();
+
+        /* @var Mage_Adminhtml_Block_Permissions_Editroles $block */
+        if ($block instanceof Mage_Adminhtml_Block_Permissions_Editroles
+            && Mage::helper('magentohackathon_advancedacl')->isAdmin()
+        ) {
+            $tab = $block->getLayout()->createBlock(
+                'magentohackathon_advancedacl/adminhtml_permissions_tab_rolesextend',
+                'adminhtml.permissions.tab.magentohackathon_advancedacl'
+            );
+            $block->addTab('magentohackathon_advancedacl', $tab);
+        }
+    }
+
+    /**
      * @param $roleId
      * @return mixed
      */

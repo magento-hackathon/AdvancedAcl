@@ -37,7 +37,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     extends Mage_Core_Helper_Abstract
 {
 
-    protected $_websites_not_int_list = null;
     protected $_websites = null;
 
     /**
@@ -147,45 +146,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
 
     /**
      *
-     * @return array
-     */
-    public function getWebsites()
-    {
-        if(is_null($this->_websites))
-        {
-            $websites = array();
-            foreach (Mage::app()->getWebsites() as $website)
-            {
-                /* @var Mage_Core_Model_Website $website */
-                $websites[$website->getWebsiteId()] = array(
-                    'name' => $website->getName(),
-                    'code' => $website->getCode()
-                );
-            }
-            $this->_websites = $websites;
-        }
-        return $this->_websites;
-    }
-
-    /**
-     *
-     * @return mixed
-     */
-    public function getWebsiteAsOption()
-    {
-        $data = array();
-        foreach($this->getWebsites() as $_id=>$_website)
-        {
-            $data[] = array(
-                'value' => $_id,
-                'label' => $_website['name']
-            );
-        };
-        return $data;
-    }
-
-    /**
-     *
      * @param int $roleid role_id from admin/role
      * @return boolean
      */
@@ -224,20 +184,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     public function getActiveRole()
     {
         return Mage::getSingleton('admin/session')->getUser()->getRole();
-    }
-
-    /**
-     *
-     * @return array
-     */
-    public function getWebsitesIds()
-    {
-        if(is_null($this->_websites_not_int_list))
-        {
-            $websites = $this->getActiveRole()->getWebsites();
-            $this->_websites_not_int_list = array_keys($websites);
-        }
-        return $this->_websites_not_int_list;
     }
 
     /**
