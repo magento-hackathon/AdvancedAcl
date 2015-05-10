@@ -63,11 +63,16 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterAgreementsGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getCollection();
-        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection
-            || $collection instanceof Mage_Sales_Model_Resource_Order_Payment_Transaction_Collection) {
-            if (0 < $this->getStoreIds()) {
-                $collection->addStoreFilter($this->getStoreIds());
+        $storeIds = $this->getStoreIds();
+        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection) {
+            if (0 < $storeIds) {
+                // collection allows only filter by ONE store
+                $firstAllowedStore = current($storeIds);
+                $collection->addStoreFilter(array($firstAllowedStore));
             }
+        }
+        if ($collection instanceof Mage_Sales_Model_Resource_Order_Payment_Transaction_Collection) {
+            $collection->addStoreFilter($storeIds);
         }
     }
 
