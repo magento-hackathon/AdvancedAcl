@@ -42,6 +42,17 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Config
     public function beforeLoad($observer)
     {
         $controller = $observer->getControllerAction();
+        if ($controller instanceof Mage_Adminhtml_System_ConfigController) {
+            switch ($controller->getRequest()->getActionName()) {
+                case 'edit':
+                case 'save':
+                    return $this->_checkScopeAccess($controller);
+            }
+        }
+    }
+
+    protected function _checkScopeAccess($controller)
+    {
         $website = $controller->getRequest()->getParam('website');
         $store   = $controller->getRequest()->getParam('store');
 

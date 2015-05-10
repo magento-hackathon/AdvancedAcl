@@ -30,12 +30,10 @@
                 <class>MagentoHackathon_AdvancedAcl_Block</class>
             </magentohackathon_advancedacl>
             <adminhtml>
-                <!--
                 <rewrite>
                     <store_switcher>MagentoHackathon_AdvancedAcl_Block_Adminhtml_Store_Switcher</store_switcher>
                     <system_config_switcher>MagentoHackathon_AdvancedAcl_Block_Adminhtml_System_Config_Switcher</system_config_switcher>
                 </rewrite>
-                -->
             </adminhtml>
         </blocks>
         <resources>
@@ -210,7 +208,7 @@
                     </magentohackathon_catalog_product_collection_load_before>
                 </observers>
             </eav_collection_abstract_load_before>
-            <controller_action_predispatch_adminhtml_system_config_edit>
+            <controller_action_predispatch_adminhtml>
                 <observers>
                     <magentohackathon_advancedacl>
                         <type>singleton</type>
@@ -218,7 +216,7 @@
                         <method>beforeLoad</method>
                     </magentohackathon_advancedacl>
                 </observers>
-            </controller_action_predispatch_adminhtml_system_config_edit>
+            </controller_action_predispatch_adminhtml>
             <controller_action_predispatch_adminhtml_catalog_product_edit>
                 <observers>
                     <magentohackathon_advancedacl>
