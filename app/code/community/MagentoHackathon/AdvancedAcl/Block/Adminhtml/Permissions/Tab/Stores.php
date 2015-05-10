@@ -32,7 +32,7 @@
  * @author      Andreas Penz <testa.peta@gmail.com>
  */
 
-class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Rolesextend
+class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Stores
     extends Mage_Adminhtml_Block_Widget_Form
     implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {

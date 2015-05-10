@@ -53,7 +53,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Role
             && Mage::helper('magentohackathon_advancedacl')->isAdmin()
         ) {
             $tab = $block->getLayout()->createBlock(
-                'magentohackathon_advancedacl/adminhtml_permissions_tab_rolesextend',
+                'magentohackathon_advancedacl/adminhtml_permissions_tab_stores',
                 'adminhtml.permissions.tab.magentohackathon_advancedacl'
             );
             $block->addTab('magentohackathon_advancedacl', $tab);
