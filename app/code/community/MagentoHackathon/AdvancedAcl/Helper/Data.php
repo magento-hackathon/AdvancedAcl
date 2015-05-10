@@ -102,7 +102,9 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         if (is_string($website)) {
             $website = Mage::getModel('core/website')->load($website);
         }
-        return empty(array_diff($website->getStoreIds(), $this->getAllowedStoreIds()));
+
+        $diff = array_diff($website->getStoreIds(), $this->getAllowedStoreIds());
+        return empty($diff);
     }
 
     /**
@@ -116,7 +118,9 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
         if (is_string($storeGroup)) {
             $storeGroup = Mage::getModel('core/store_group')->load($storeGroup);
         }
-        return empty(array_diff($storeGroup->getStoreIds(), $this->getAllowedStoreIds()));
+
+        $diff = array_diff($storeGroup->getStoreIds(), $this->getAllowedStoreIds());
+        return empty($diff);
     }
 
     /**
