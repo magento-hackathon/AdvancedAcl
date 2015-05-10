@@ -71,6 +71,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * get stores the customer is restricted to
      *
      * @return array
+     * @codeCoverageIgnore
      */
     public function getAllowedStoreIds()
     {
@@ -123,30 +124,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
     }
 
     /**
-     *
-     * @todo add DispatchEvent in this method
-     * @return array
-     * @codeCoverageIgnore
-     */
-    public function getFields()
-    {
-        return array(
-            'websites', // array
-        );
-    }
-
-    /**
-     * @deprecated since version 1.0.0.1
-     *
-     * @return array
-     */
-    public function getFieldsInJson()
-    {
-        return self::getFields();
-    }
-
-    /**
-     *
      * @param int $roleid role_id from admin/role
      * @return boolean
      * @codeCoverageIgnore
@@ -159,21 +136,6 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
             ->addFieldToFilter('resource_id', 'all')
             ->addFieldToFilter('permission', 'allow');
         if($collection->count() > 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * check if the admin area is active
-     *
-     * @return boolean
-     * @codeCoverageIgnore
-     */
-    public function isAdminArea()
-    {
-        if(Mage::getDesign()->getArea() == 'adminhtml')
         {
             return true;
         }

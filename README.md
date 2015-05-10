@@ -50,6 +50,28 @@ they have access to all stores of the website. Furthermore, users will be able
 to enter default level, if they have access to all stores of your Magento
 installation.
 
+## Extending
+
+Your shop probably contains lots of modules and you might want to restrict
+access to these, too.
+
+Our helper provides three methods to determine access:
+
+* ``Mage::helper('magentohackathon_advancedacl')->hasStoreViewAccess($store)``
+  to request access to a specific store (given as Mage_Core_Model_Store, store
+  id or store code),
+* ``Mage::helper('magentohackathon_advancedacl')->hasFullStoreGroupAccess($storegroup)``
+  to request access to a whole storegroup (given as Mage_Core_Model_Store, store
+  id or store code), that means, the user is allowed to
+  access all stores of this store group,
+* ``Mage::helper('magentohackathon_advancedacl')->hasFullWebsiteAccess($website)``
+  to request access to a whole website (given as Mage_Core_Model_Website,
+  website id or website code), that means, the user is allowed to
+  access all stores of this website,
+* ``Mage::helper('magentohackathon_advancedacl')->hasFullAccess()``
+  to request access to the whole shop, that means, the user is allowed to
+  access all stores of the shop
+
 Licence
 -------
 [OSL - Open Software Licence 3.0](http://opensource.org/licenses/osl-3.0.php)

@@ -48,7 +48,7 @@ class MagentoHackathon_AdvancedAcl_Block_Adminhtml_Permissions_Tab_Stores
     {
         $form = new Varien_Data_Form();
         $fieldset = $form->addFieldset('base_fieldset', array(
-            'legend' => Mage::helper('adminhtml')->__('Advanced Acl'))
+            'legend' => Mage::helper('adminhtml')->__('Restrict store view access'))
         );
 
         /**
