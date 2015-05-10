@@ -207,6 +207,11 @@
                         <class>magentohackathon_advancedacl/observer_catalog</class>
                         <method>filterSearchTermsGrid</method>
                     </magentohackathon_catalog_search_term_collection_load_before>
+                    <magentohackathon_catalog_tag_collection_load_before>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_catalog</class>
+                        <method>filterTagGrid</method>
+                    </magentohackathon_catalog_tag_collection_load_before>
                 </observers>
             </core_collection_abstract_load_before>
             <eav_collection_abstract_load_before>
