@@ -52,7 +52,7 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      * @param int|string|Mage_Core_Model_Store $store store id, store code, or store
      * @return bool
      */
-    public function isAllowedAccessForStore($store = null)
+    public function hasStoreViewAccess($store = null)
     {
         if (is_null($store)) {
             $store = $this->getDefaultStoreId();
