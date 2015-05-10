@@ -18,7 +18,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Access extends
 
         $storeId = $controller->getRequest()->getParam('store');
 
-        if ($this->getHelper()->isAllowedAccessForStore($storeId)) {
+        if (!$this->getHelper()->isAllowedAccessForStore($storeId)) {
             $this->deniedAction($controller, self::CATALOG_PRODUCT_INDEX_ROUTE_PATH);
         }
     }
