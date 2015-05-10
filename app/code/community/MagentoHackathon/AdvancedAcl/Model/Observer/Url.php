@@ -21,9 +21,11 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Url extends
     protected function _appendFirstStoreId(Mage_Core_Controller_Varien_Action $controller)
     {
         $storeId = $controller->getRequest()->getParam(self::STORE_PARAM_KEY);
+        $defaultStoreId = $this->getHelper()->getDefaultStoreId();
+        $allowedStoreIds = $this->getHelper()->getAllowedStoreIds();
 
-        if (is_null($storeId)) {
-            $storeId = current($this->getHelper()->getAllowedStoreIds());
+        if (is_null($storeId) && !in_array($defaultStoreId, $allowedStoreIds)) {
+            $storeId = current($allowedStoreIds);
             $controller->getRequest()->setParam(self::STORE_PARAM_KEY, $storeId);
         }
     }
