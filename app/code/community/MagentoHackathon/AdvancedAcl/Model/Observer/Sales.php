@@ -64,12 +64,12 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     {
         $collection = $observer->getCollection();
         $storeIds = $this->getStoreIds();
-        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection) {
-            if (0 < $storeIds) {
-                // collection allows only filter by ONE store
-                $firstAllowedStore = current($storeIds);
-                $collection->addStoreFilter(array($firstAllowedStore));
-            }
+        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection
+            && ! empty($storeIds)
+            && ! in_array(Mage_Core_Model_App::ADMIN_STORE_ID, $storeIds)
+        ) {
+            $collection->setIsStoreFilterWithAdmin(false);
+            $collection->addStoreFilter($storeIds);
         }
         if ($collection instanceof Mage_Sales_Model_Resource_Order_Payment_Transaction_Collection) {
             $collection->addStoreFilter($storeIds);
