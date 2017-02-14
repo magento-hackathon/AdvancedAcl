@@ -185,6 +185,11 @@
                         <class>magentohackathon_advancedacl/observer_catalog</class>
                         <method>filterProductGrid</method>
                     </magentohackathon_catalog_product_collection_load_before>
+                    <magentohackathon_customer_collection_load_before>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_customer</class>
+                        <method>filterCustomerGrid</method>
+                    </magentohackathon_customer_collection_load_before>
                 </observers>
             </eav_collection_abstract_load_before>
             <controller_action_predispatch_adminhtml>
