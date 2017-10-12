@@ -63,15 +63,17 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Sales
     public function filterAgreementsGrid(Varien_Event_Observer $observer)
     {
         $collection = $observer->getCollection();
-        $storeIds = $this->getStoreIds();
-        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection
-            && ! empty($storeIds)
-            && ! in_array(Mage_Core_Model_App::ADMIN_STORE_ID, $storeIds)
-        ) {
-            $collection->setIsStoreFilterWithAdmin(false);
-            $collection->addStoreFilter($storeIds);
+        if ($collection instanceof Mage_Checkout_Model_Resource_Agreement_Collection) {
+            // getStoreIds() includes a DB query, so only execute this if this is the correct collection!
+            $storeIds = $this->getStoreIds();
+            if (! empty($storeIds) && ! in_array(Mage_Core_Model_App::ADMIN_STORE_ID, $storeIds)) {
+                $collection->setIsStoreFilterWithAdmin(false);
+                $collection->addStoreFilter($storeIds);
+            }
         }
         if ($collection instanceof Mage_Sales_Model_Resource_Order_Payment_Transaction_Collection) {
+            // getStoreIds() includes a DB query, so only execute this if this is the correct collection!
+            $storeIds = $this->getStoreIds();
             $collection->addStoreFilter($storeIds);
         }
     }
