@@ -149,7 +149,24 @@ class MagentoHackathon_AdvancedAcl_Helper_Data
      */
     public function getActiveRole()
     {
-        return Mage::getSingleton('admin/session')->getUser()->getRole();
+        $user = Mage::getSingleton('admin/session')->getUser();
+        if ($user === null) {
+            // this can happen on API calls - make sure to use an administrator with all rights then!
+            // we should not filter any collection for API calls since our restrictions are defined per admin-user
+            // we currently do not have any restrictions for API users
+            $adminRoleId = Mage::getModel('admin/rules')
+                ->getCollection()
+                ->addFieldToFilter('resource_id', Mage_Admin_Model_Resource_Acl::ACL_ALL_RULES)
+                ->addFieldToFilter('permission', Mage_Admin_Model_Rules::RULE_PERMISSION_ALLOWED)
+                ->setPageSize(1)
+                ->setCurPage(1)
+                ->getFirstItem()
+                ->getData('role_id');
+
+            return Mage::getModel('admin/role')->load($adminRoleId);
+        }
+
+        return $user->getRole();
     }
 
     /**
