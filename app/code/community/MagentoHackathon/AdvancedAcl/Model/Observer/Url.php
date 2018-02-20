@@ -46,4 +46,12 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Url extends
         $this->_appendFirstStoreId($observer->getControllerAction());
     }
 
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    public function cmsPageIndex(Varien_Event_Observer $observer)
+    {
+        $this->_appendFirstStoreId($observer->getControllerAction());
+    }
+
 }
