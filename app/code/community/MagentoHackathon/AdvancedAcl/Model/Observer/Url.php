@@ -24,7 +24,7 @@ class MagentoHackathon_AdvancedAcl_Model_Observer_Url extends
         $defaultStoreId = $this->getHelper()->getDefaultStoreId();
         $allowedStoreIds = $this->getHelper()->getAllowedStoreIds();
 
-        if (is_null($storeId) && !in_array($defaultStoreId, $allowedStoreIds)) {
+        if (is_null($storeId) && !empty($allowedStoreIds) && !in_array($defaultStoreId, $allowedStoreIds)) {
             $storeId = current($allowedStoreIds);
             $controller->getRequest()->setParam(self::STORE_PARAM_KEY, $storeId);
         }
