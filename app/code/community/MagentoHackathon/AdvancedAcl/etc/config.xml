@@ -229,6 +229,15 @@
                     </magentohackathon_advancedacl>
                 </observers>
             </controller_action_predispatch_adminhtml_catalog_category_edit>
+            <controller_action_predispatch_adminhtml_cms_page_index>
+                <observers>
+                    <magentohackathon_advancedacl>
+                        <type>singleton</type>
+                        <class>magentohackathon_advancedacl/observer_url</class>
+                        <method>cmsPageIndex</method>
+                    </magentohackathon_advancedacl>
+                </observers>
+            </controller_action_predispatch_adminhtml_cms_page_index>
             <!-- // append store_id to url -->
         </events>
     </adminhtml>
